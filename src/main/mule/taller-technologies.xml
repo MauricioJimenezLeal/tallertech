@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd">
+	<apikit:config outboundHeadersMapName="outboundHeadersMapName" httpStatusVarName="httpStatus" doc:name="Router" doc:id="dba3ce5a-d7b6-4fe9-a95f-9e81012c8cc3" name="Router" api="project.yaml" />
+	<flow name="taller-technologiesFlow" doc:id="1948d61c-dc8a-48c9-8a7b-5b38454599bb" >
+		<http:listener doc:name="Listener" doc:id="c6ea2f87-3e58-44b8-8f13-2a05d1fc4810" config-ref="HTTP_Listener_config" path="/api/*"/>
+		<apikit:router doc:name="APIkit Router" doc:id="201010de-e613-427e-9e3d-7ddbe7c55f6b" config-ref="Router"/>
+	</flow>
+	<flow name="taller-technologiesFlow-api-customers-process" doc:id="b897a8f1-a884-46c5-8ec6-992fa09dcb03" >
+		<flow-ref doc:name="Flow Reference" doc:id="88662d26-9eca-4207-bdd6-95feda68e5b4" />
+	</flow>
+</mule>

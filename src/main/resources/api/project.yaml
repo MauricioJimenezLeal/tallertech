@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Customer Process API
+  version: 1.0.0
+  description: Process API to normalize customer payloads from System APIs into a
+    canonical customer object.
+paths:
+  /customers/process:
+    post:
+      summary: Process a customer payload and return canonical customer JSON
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/client"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/client"
+      responses:
+        "200":
+          description: Canonical customer object
+          content:
+            application/json:
+              schema:
+                type: object
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      type: string
+components:
+  schemas:
+    client:
+      type: object
+      required:
+        - externalId
+        - firstName
+        - lastName
+        - email
+      properties:
+        externalId:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
