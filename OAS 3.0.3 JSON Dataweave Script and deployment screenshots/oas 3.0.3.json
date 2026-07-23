@@ -1,0 +1,115 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Taller Interview Process API",
+    "version": "1.0.0",
+    "description": "Process API to normalize customer payloads from System APIs into a canonical customer object."
+  },
+  "paths": {
+    "/customers/process": {
+      "post": {
+        "summary": "Process a customer payload and return canonical customer JSON",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                  "$ref": "#/components/schemas/customer"
+                }
+            },
+            "application/xml": {
+              "schema": {
+                  "$ref": "#/components/schemas/customer"
+                }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Canonical customer object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": { "type": "string" },
+                    "details": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "customer": {
+        "type": "object",
+        "required": [
+          "externalId",
+          "firstName",
+          "lastName",
+          "email"
+        ],
+        "properties": {
+          "externalId": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format" : "email"
+          },
+          "dob": {
+            "type": "string",
+            "format" : "date"
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "line1": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "postalCode": {
+                "type": "string",
+                "pattern": "^[0-9]{5}$"
+              },
+              "country": {
+                "type": "string"
+              }
+            }
+          },
+          "sourceSystem": {
+              "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

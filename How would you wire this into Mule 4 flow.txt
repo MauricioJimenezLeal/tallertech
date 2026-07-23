@@ -1,0 +1,9 @@
+How you would wire this into Mule 4 flow: 
+
+The API Spec is created in Design Center with OAS 3.0 (for this exercise, could be raml 1.0) and published to exchange
+
+The API exposure will be through API Manager, taking the API published in exchange and connected to the implementation with the Autodiscovery ID and then applying policies for security, the most common ones are oauth2.0 jwt or client enforcement
+
+For this application the dataweave will run in a Transform Message Component, having the capability to receive both JSON and XML
+
+For deployment we have many options, CI/CD pipeline, Mule Maven Plugin or the API Manager

@@ -1,0 +1,93 @@
+{
+  "info": {
+    "_postman_id": "89669029-fd7d-43e7-bcce-a3cf8d6fc80e",
+    "name": "taller-interview-collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "9325026",
+    "_collection_link": "https://go.postman.co/collection/9325026-89669029-fd7d-43e7-bcce-a3cf8d6fc80e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "client_id",
+            "value": "test",
+            "type": "text"
+          },
+          {
+            "key": "client_secret",
+            "value": "test",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"externalId\": \"C-1001\",\r\n  \"name\": { \"first\": \" Alice \", \"last\": \" Smith \"},\r\n  \"email\": \"  ALICE.SMITH@Example.COM \",\r\n  \"dob\": \"1990-04-15\",\r\n  \"address\": {\r\n    \"line1\": \"123 Main St\",\r\n    \"city\": \"Anytown\",\r\n    \"state\": \"CA\",\r\n    \"postalCode\": \"90210\",\r\n    \"country\": \"US\"\r\n  },\r\n  \"sourceSystem\": \"CRM-X\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/process/customers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "process",
+            "customers"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "XML",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "client_id",
+            "value": "test",
+            "type": "text"
+          },
+          {
+            "key": "client_secret",
+            "value": "test",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<customer>\r\n  <externalId>\"C-1001\"</externalId>\r\n  <name>\r\n    <first>\"Alice\"</first>\r\n    <last>\"Smith\"</last>\r\n  </name>\r\n  <email></email>\r\n  <dob>2123-12-05</dob>\r\n  <address>\r\n    <line1></line1>\r\n    <city></city>\r\n    <state></state>\r\n    <postalCode>\"12345\"</postalCode>\r\n    <country></country>\r\n  </address>\r\n  <sourceSystem></sourceSystem>\r\n</customer>",
+          "options": {
+            "raw": {
+              "language": "xml"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/customers/process",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "customers",
+            "process"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
